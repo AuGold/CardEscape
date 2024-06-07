@@ -10,6 +10,7 @@ size = Vector2(229, 367)
 size = Vector2(233, 372)
 
 [node name="ExampleBoss" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
 script = ExtResource("1_lv3kd")
 speed = 200
 jumpSpeed = 400
@@ -25,6 +26,7 @@ position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_johi8")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.5, 0)

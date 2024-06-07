@@ -49,8 +49,11 @@ func _on_area_2d_body_entered(body):
 
 func changeHealth(changeValue, node):
 	currentHealth += changeValue
+	self.modulate = Color8(255,0,0)
 	if(currentHealth <= 0):
 		hide()
 		node.enemiesKilled += 1
 		$CollisionShape2D.set_deferred("disabled", true)
 		self.queue_free()
+	await get_tree().create_timer(0.5).timeout 
+	self.modulate = Color8(255,255,255,255)

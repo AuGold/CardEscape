@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://prltuud73o1p" path="res://player.tscn" id="1_q4mge"]
 [ext_resource type="Texture2D" uid="uid://yi0d6mwneov4" path="res://assests/TX Struct.png" id="2_cm1gm"]
 [ext_resource type="PackedScene" uid="uid://3sysxi42aylg" path="res://example_enemy.tscn" id="3_lrdib"]
-[ext_resource type="PackedScene" uid="uid://dhh7mnb1itjqv" path="res://example_boss.tscn" id="5_v28sq"]
+[ext_resource type="PackedScene" uid="uid://cebw1ie88ca4t" path="res://freeze_enemy.tscn" id="5_qvmv1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60ram"]
 texture = ExtResource("2_cm1gm")
@@ -643,5 +643,5 @@ layer_0/tile_data = PackedInt32Array(2490368, 1900544, 9, 2555904, 1900544, 10, 
 [node name="ExampleEnemy" parent="." instance=ExtResource("3_lrdib")]
 position = Vector2(915, 532)
 
-[node name="ExampleBoss" parent="." instance=ExtResource("5_v28sq")]
-position = Vector2(499, 377)
+[node name="FreezeEnemy" parent="." instance=ExtResource("5_qvmv1")]
+position = Vector2(193, 552)

@@ -10,6 +10,7 @@ size = Vector2(50, 80)
 size = Vector2(52, 82)
 
 [node name="ExampleEnemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
 script = ExtResource("1_fsgj6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
