@@ -9,7 +9,7 @@ var screenSize
 var currentHealth = 0
 var facing = "right"
 var didFire = false
-var fireTime = 100
+var fireTime = 50
 var punchesObtained = 0
 var enemiesKilled = 0
 
@@ -71,7 +71,7 @@ func _physics_process(delta):
 		fireTime -= 1
 		if(fireTime == 0):
 			didFire = false
-			fireTime = 100
+			fireTime = 50
 	pass
 
 func changeHealth(changeValue):
