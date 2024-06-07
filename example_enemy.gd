@@ -47,9 +47,10 @@ func _on_area_2d_body_entered(body):
 		body.changeHealth(-5)
 	pass # Replace with function body.
 
-func changeHealth(changeValue):
+func changeHealth(changeValue, node):
 	currentHealth += changeValue
 	if(currentHealth <= 0):
 		hide()
+		node.enemiesKilled += 1
 		$CollisionShape2D.set_deferred("disabled", true)
 		self.queue_free()

@@ -10,8 +10,11 @@ var currentHealth = 0
 var facing = "right"
 var didFire = false
 var fireTime = 100
+var punchesObtained = 0
+var enemiesKilled = 0
 
 var bullet = preload("res://bullet.tscn")
+var deathScreen = preload("res://game_over.tscn")
 const GRAVITY = 400.0
 
 # Called when the node enters the scene tree for the first time.
@@ -60,6 +63,7 @@ func _physics_process(delta):
 		b.position = Vector2(self.position.x + addX, self.position.y)
 		b.visible = true
 		b.velocity = Vector2(speed+50, 0).rotated(b.rotation)
+		b.bulletOwner = self
 		get_tree().root.add_child(b)
 		didFire = true
 		
@@ -72,4 +76,17 @@ func _physics_process(delta):
 
 func changeHealth(changeValue):
 	currentHealth += changeValue
+	if(currentHealth <=0):
+		gameOver()
 	$CanvasLayer/HPBar.value = currentHealth
+	
+
+func gameOver():
+	hide()
+	$CollisionShape2D.set_deferred("disabled", true)
+	self.queue_free()
+	var done = deathScreen.instantiate()
+	done.find_child("CardPunched").text = "You got your card punched " + str(punchesObtained) + " times!"
+	done.find_child("EnemiesKilled").text = "You killed " + str(enemiesKilled) + " enemies!"
+	get_tree().root.add_child(done)
+	pass
