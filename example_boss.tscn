@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhh7mnb1itjqv"]
+
+[ext_resource type="Script" path="res://example_boss.gd" id="1_lv3kd"]
+[ext_resource type="Texture2D" uid="uid://s7fl7dvo4hnm" path="res://assests/enemyplaceholder.png" id="1_w7uym"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_johi8"]
+size = Vector2(229, 367)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewm1f"]
+size = Vector2(233, 372)
+
+[node name="ExampleBoss" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_lv3kd")
+maxHealth = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4.58, 4.58)
+texture = ExtResource("1_w7uym")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_johi8")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_ewm1f")
+
+[node name="BossHealth" type="ProgressBar" parent="Area2D"]
+visible = false
+offset_left = -75.0
+offset_top = -223.0
+offset_right = 77.0
+offset_bottom = -196.0
+value = 100.0
+show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -13,6 +13,8 @@ const GRAVITY = 400.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentHealth = maxHealth
+	$Area2D/BossHealth.max_value = maxHealth
+	$Area2D/BossHealth.value = currentHealth
 	pass # Replace with function body.
 
 func _process(delta):
@@ -48,9 +50,12 @@ func _on_area_2d_body_entered(body):
 	pass # Replace with function body.
 
 func changeHealth(changeValue, node):
+	$Area2D/BossHealth.visible = true
 	currentHealth += changeValue
+	$Area2D/BossHealth.value = currentHealth
 	if(currentHealth <= 0):
 		hide()
-		node.enemiesKilled += 1
+		node.killedBoss()
 		$CollisionShape2D.set_deferred("disabled", true)
 		self.queue_free()
+		

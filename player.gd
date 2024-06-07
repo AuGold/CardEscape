@@ -5,6 +5,7 @@ signal hit
 @export var speed = 0
 @export var jumpSpeed = 0
 @export var maxHealth = 0
+@export var attackDamage = 0
 var screenSize
 var currentHealth = 0
 var facing = "right"
@@ -12,6 +13,7 @@ var didFire = false
 var fireTime = 50
 var punchesObtained = 0
 var enemiesKilled = 0
+var bulletsFired = 1
 
 var bullet = preload("res://bullet.tscn")
 var deathScreen = preload("res://game_over.tscn")
@@ -53,19 +55,24 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if Input.is_action_pressed("fire") and didFire == false:
-		var b = bullet.instantiate()
 		var addX
+		var rotated = 0
 		if(facing == "right"):
 			addX = 60
 		if(facing == "left"):
 			addX = -60
-			b.rotation = PI
-		b.position = Vector2(self.position.x + addX, self.position.y)
-		b.visible = true
-		b.velocity = Vector2(speed+50, 0).rotated(b.rotation)
-		b.bulletOwner = self
-		get_tree().root.add_child(b)
-		didFire = true
+			rotated = PI
+		for n in bulletsFired:
+			var b = bullet.instantiate()
+			b.position = Vector2(self.position.x + addX, self.position.y)
+			b.rotation = rotated
+			b.visible = true
+			b.velocity = Vector2(speed+50, 0).rotated(b.rotation)
+			b.bulletOwner = self
+			b.damage = attackDamage
+			get_tree().root.add_child(b)
+			didFire = true
+			await get_tree().create_timer(0.1).timeout
 		
 	if(didFire == true):
 		fireTime -= 1
@@ -80,6 +87,11 @@ func changeHealth(changeValue):
 		gameOver()
 	$CanvasLayer/HPBar.value = currentHealth
 	
+
+func killedBoss():
+	punchesObtained += 1
+	if(punchesObtained == 1):
+		bulletsFired += 1
 
 func gameOver():
 	hide()

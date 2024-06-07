@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var bulletOwner
+var damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,6 @@ func _on_area_2d_body_entered(body):
 		for group in body.get_groups():
 			if(group == "Enemy"):
 				$CollisionPolygon2D.set_deferred("disabled", true)
-				body.changeHealth(-5, bulletOwner)
+				body.changeHealth(-damage, bulletOwner)
 				hide()
 				self.queue_free()

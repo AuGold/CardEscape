@@ -11,6 +11,7 @@ script = ExtResource("1_dgdvn")
 speed = 200
 jumpSpeed = 250
 maxHealth = 50
+attackDamage = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fgh6l")
