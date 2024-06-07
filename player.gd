@@ -14,6 +14,7 @@ var fireTime = 50
 var punchesObtained = 0
 var enemiesKilled = 0
 var bulletsFired = 1
+var gameOverFired = false
 
 var bullet = preload("res://bullet.tscn")
 var deathScreen = preload("res://game_over.tscn")
@@ -83,8 +84,9 @@ func _physics_process(delta):
 
 func changeHealth(changeValue):
 	currentHealth += changeValue
-	if(currentHealth <=0):
+	if(currentHealth <=0 && gameOverFired == false):
 		gameOver()
+		gameOverFired = true
 	$CanvasLayer/HPBar.value = currentHealth
 	
 
@@ -95,8 +97,8 @@ func killedBoss():
 
 func gameOver():
 	hide()
-	$CollisionShape2D.set_deferred("disabled", true)
-	self.queue_free()
+	#$CollisionShape2D.set_deferred("disabled", true)
+	#self.queue_free()
 	var done = deathScreen.instantiate()
 	done.find_child("CardPunched").text = "You got your card punched " + str(punchesObtained) + " times!"
 	done.find_child("EnemiesKilled").text = "You killed " + str(enemiesKilled) + " enemies!"

@@ -9,6 +9,7 @@ var isMoving = false
 var changeMove = 100
 
 const GRAVITY = 400.0
+@onready var player = $"../Player"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,16 +22,19 @@ func _process(delta):
 	
 	velocity.y += delta * GRAVITY
 	
+	
 	if(isMoving == false):
 		changeMove = 100
 		
 		var randomDirection = randf_range(1,30)
-		if(randomDirection >= 1 and randomDirection <= 8):
-			velocity.x = -speed
-			isMoving = true
-		elif(randomDirection >= 9 and randomDirection <= 16):
-			velocity.x = speed
-			isMoving = true
+		if(randomDirection >= 1 and randomDirection <= 16):
+			var directionToMove = player.position.x - self.position.x
+			if(directionToMove < 0):
+				velocity.x = -speed
+				isMoving = true
+			elif(directionToMove > 0):
+				velocity.x = speed
+				isMoving = true
 		elif(randomDirection >= 17 and randomDirection <= 24):
 			velocity.x = 0
 			isMoving = true
