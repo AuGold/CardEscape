@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dkc1m2k033nyy"]
 
-[ext_resource type="Script" path="res://burrow_enemy.gd" id="1_xriem"]
+[ext_resource type="Script" path="res://enemies/burrow_enemy.gd" id="1_xriem"]
 [ext_resource type="Texture2D" uid="uid://d2s5uyes5gjij" path="res://assests/Burrow.png" id="2_16mb1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iikjs"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=32 format=3 uid="uid://qx4luvkdvhsx"]
 
-[ext_resource type="Texture2D" path="res://assests/BurrowAnimation.png" id="1_bkgmp"]
-[ext_resource type="Script" path="res://third_boss.gd" id="1_wu1mo"]
+[ext_resource type="Texture2D" uid="uid://lo64vuuboib7" path="res://assests/Boss3Burrow.png" id="1_bkgmp"]
+[ext_resource type="Script" path="res://enemies/third_boss.gd" id="1_wu1mo"]
 [ext_resource type="Texture2D" uid="uid://bq1y6lifsashx" path="res://assests/Boss3.png" id="2_m0dt1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sidcm"]

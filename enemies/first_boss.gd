@@ -27,7 +27,7 @@ func _process(delta):
 		changeMove = 100
 		
 		var randomDirection = randf_range(1,30)
-		if(randomDirection >= 1 and randomDirection <= 16):
+		if(randomDirection >= 1 and randomDirection <= 10):
 			var directionToMove = player.position.x - self.position.x
 			if(directionToMove < 0):
 				velocity.x = -speed
@@ -37,7 +37,7 @@ func _process(delta):
 				velocity.x = speed
 				isMoving = true
 				$AnimatedSprite2D.play("default")
-		elif(randomDirection >= 17 and randomDirection <= 24):
+		elif(randomDirection >= 11 and randomDirection <= 15):
 			velocity.x = 0
 			isMoving = true
 			$AnimatedSprite2D.stop()

@@ -22,7 +22,7 @@ var gameOverFired = false
 var frozen = false
 var frozenTimer = 0
 var ability = "bullet"
-var addX = 60
+var addX = 25
 var whipActive = false
 var currentWhip
 
@@ -88,27 +88,6 @@ func _physics_process(delta):
 			if(fireTime == 0):
 				didFire = false
 				fireTime = 50
-		
-		if Input.is_action_pressed("fire") and whipActive == false and ability == "whip":
-			whipActive = true
-			var rotated = 0
-			if(facing == "left"):
-				rotated = PI
-			w.position = Vector2(self.position.x + addX, self.position.y)
-			w.rotation = rotated
-			w.visible = true
-			w.bulletOwner = self
-			w.damage = attackDamage
-			w.addX = addX
-			get_tree().root.add_child(w)
-			whipActive = true
-			currentWhip = w
-			await get_tree().create_timer(2.0).timeout
-			w.queue_free()
-			whipActive = false
-		
-		if(whipActive):
-			currentWhip.addX = addX
 				
 		if(frozen):
 			frozenTimer -= 1
@@ -134,9 +113,25 @@ func changeHealth(changeValue):
 	self.modulate = Color8(255,255,255,255)
 
 func killedBoss():
+	isActive = false
+	
 	punchesObtained += 1
 	if(punchesObtained == 1):
+		$PunchCard.texture = load("res://assests/Punch1.png")
 		bulletsFired += 1
+		await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + "! If you can hear this, your current location is perfect to plant the first sapling. Activate planting protocol!")
+		$AnimatedSprite2D.play("plantTree")
+		$AudioStreamPlayer2D.stream = load("res://sounds/plantTree.mp3")
+		$AudioStreamPlayer2D.play()
+		await TextBoxes.popUpText("Excellent job Rover-" + str(TextBoxes.roverNumber) + "! It looks like you planted your first sapling.")
+		$PunchCard.visible = true
+		await TextBoxes.pressedMouse
+		await TextBoxes.popUpText("Your Sapling Punch Card should have filled out the first slot. This should augment your rover for the rest of the mission.")
+		await TextBoxes.popUpText("Keep going Rover-" +str(TextBoxes.roverNumber) + ". We're all counting on you.")
+		
+		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability)
+		get_tree().change_scene_to_file("res://levels/level_2.tscn")
+	
 
 func freezeMove(number):
 	if(frozen == false):

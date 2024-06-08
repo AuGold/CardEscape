@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dn7pu7dr15uxb"]
 
-[ext_resource type="Script" path="res://level_2.gd" id="1_4uus7"]
+[ext_resource type="Script" path="res://levels/level_2.gd" id="1_4uus7"]
 [ext_resource type="Texture2D" uid="uid://yi0d6mwneov4" path="res://assests/TX Struct.png" id="1_dhkye"]
 [ext_resource type="PackedScene" uid="uid://prltuud73o1p" path="res://player.tscn" id="3_msa3k"]
-[ext_resource type="PackedScene" uid="uid://3sysxi42aylg" path="res://example_enemy.tscn" id="4_23hs0"]
-[ext_resource type="PackedScene" uid="uid://cebw1ie88ca4t" path="res://freeze_enemy.tscn" id="5_cfs5p"]
+[ext_resource type="PackedScene" uid="uid://3sysxi42aylg" path="res://enemies/example_enemy.tscn" id="4_23hs0"]
+[ext_resource type="PackedScene" uid="uid://cebw1ie88ca4t" path="res://enemies/freeze_enemy.tscn" id="5_cfs5p"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_48lv6"]
 

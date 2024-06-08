@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bislffapb05d2"]
+[gd_scene load_steps=4 format=3 uid="uid://bislffapb05d2"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_a6yhe"]
-[ext_resource type="Texture2D" uid="uid://77os11g0i8wg" path="res://assests/bulletPlaceholder.png" id="1_sfcn3"]
+[ext_resource type="Texture2D" uid="uid://cqxx84i3if48e" path="res://assests/Projectile.png" id="2_v6g1i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b5vd"]
+size = Vector2(6, 9)
 
 [node name="Bullet" type="Area2D"]
 collision_mask = 3
@@ -9,13 +12,12 @@ script = ExtResource("1_a6yhe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.421875, 0.421875)
-texture = ExtResource("1_sfcn3")
+position = Vector2(2, -1)
+scale = Vector2(0.974609, 0.974609)
+texture = ExtResource("2_v6g1i")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(0.0779144, 0.0288723)
-scale = Vector2(0.414757, 0.421535)
-build_mode = 1
-polygon = PackedVector2Array(27, -1, -19, 27, -19, -28)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_7b5vd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

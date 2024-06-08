@@ -30,14 +30,14 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_body_entered(body):
-	if(body.name == "TileMap"):
-		$CollisionPolygon2D.set_deferred("disabled", true)
+	if(body.name == "FrontTileMap"):
+		$CollisionShape2D.set_deferred("disabled", true)
 		hide()
 		self.queue_free()
 	else:
 		for group in body.get_groups():
 			if(group == "Enemy"):
-				$CollisionPolygon2D.set_deferred("disabled", true)
+				$CollisionShape2D.set_deferred("disabled", true)
 				body.changeHealth(-damage, bulletOwner)
 				hide()
 				self.queue_free()

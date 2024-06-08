@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://cebw1ie88ca4t"]
 
-[ext_resource type="Script" path="res://freeze_enemy.gd" id="1_wu2q3"]
+[ext_resource type="Script" path="res://enemies/freeze_enemy.gd" id="1_wu2q3"]
 [ext_resource type="Texture2D" uid="uid://7gm4poonj61d" path="res://assests/Freeze.png" id="2_3qjkq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tjgwb"]
