@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mqrmfv5nwbtc"
-path="res://.godot/imported/burrowEnemy.png-7ca854c432d1cbfada14ea1f3fa49754.ctex"
+uid="uid://7gm4poonj61d"
+path="res://.godot/imported/Freeze.png-6216a6daaa794eb023f1792fb00ce43d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/burrowEnemy.png"
-dest_files=["res://.godot/imported/burrowEnemy.png-7ca854c432d1cbfada14ea1f3fa49754.ctex"]
+source_file="res://assests/Freeze.png"
+dest_files=["res://.godot/imported/Freeze.png-6216a6daaa794eb023f1792fb00ce43d.ctex"]
 
 [params]
 

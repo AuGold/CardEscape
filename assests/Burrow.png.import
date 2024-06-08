@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s7fl7dvo4hnm"
-path="res://.godot/imported/enemyplaceholder.png-beb94c64c866df3a378b1a90fbff8121.ctex"
+uid="uid://d2s5uyes5gjij"
+path="res://.godot/imported/Burrow.png-558f3b2bb2f6657a0e16a59a4afbe689.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/enemyplaceholder.png"
-dest_files=["res://.godot/imported/enemyplaceholder.png-beb94c64c866df3a378b1a90fbff8121.ctex"]
+source_file="res://assests/Burrow.png"
+dest_files=["res://.godot/imported/Burrow.png-558f3b2bb2f6657a0e16a59a4afbe689.ctex"]
 
 [params]
 

@@ -16,7 +16,7 @@ func _ready():
 	currentHealth = maxHealth
 	pass # Replace with function body.
 
-func _process(delta):
+func _process(_delta):
 	
 	if(isMoving == false):
 		changeMove = 100
@@ -25,21 +25,27 @@ func _process(delta):
 		if(randomDirection >= 1 and randomDirection <= 8):
 			velocity.x = -speed
 			isMoving = true
+			$AnimatedSprite2D.stop()
 		elif(randomDirection >= 9 and randomDirection <= 16):
 			velocity.x = speed
 			isMoving = true
+			$AnimatedSprite2D.stop()
 		elif(randomDirection >= 17 and randomDirection <= 24):
 			velocity.x = 0
 			isMoving = true
+			$AnimatedSprite2D.stop()
 		else:
 			if(isBurrowed == false):
 				position.y += 200
 				speed = 300
 				isBurrowed = true
+				$AnimatedSprite2D.stop()
 			else:
 				position.y -= 200
 				isBurrowed = false
 				speed = 100
+				$AnimatedSprite2D.play("default")
+				isMoving = true
 	
 		move_and_slide()
 	else:

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b52bd4k55pcit"
-path="res://.godot/imported/playerPlaceholder.png-934c55bf1f7169d3aa36d4f3f0fd9e08.ctex"
+uid="uid://b56m7n026hn8a"
+path="res://.godot/imported/MiniBoss.png-8383da2378abe91d9d0767715d65d339.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/playerPlaceholder.png"
-dest_files=["res://.godot/imported/playerPlaceholder.png-934c55bf1f7169d3aa36d4f3f0fd9e08.ctex"]
+source_file="res://assests/MiniBoss.png"
+dest_files=["res://.godot/imported/MiniBoss.png-8383da2378abe91d9d0767715d65d339.ctex"]
 
 [params]
 

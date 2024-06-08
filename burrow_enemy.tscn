@@ -1,28 +1,111 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkc1m2k033nyy"]
+[gd_scene load_steps=16 format=3 uid="uid://dkc1m2k033nyy"]
 
 [ext_resource type="Script" path="res://burrow_enemy.gd" id="1_xriem"]
-[ext_resource type="Texture2D" uid="uid://mqrmfv5nwbtc" path="res://assests/burrowEnemy.png" id="2_8s0nt"]
+[ext_resource type="Texture2D" uid="uid://d2s5uyes5gjij" path="res://assests/Burrow.png" id="2_16mb1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aegf8"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66igm"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l23ya"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klqti"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8vmr"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47ckl"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjtme"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sye2s"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2txo6"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1j16"]
+atlas = ExtResource("2_16mb1")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jppax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aegf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66igm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l23ya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klqti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8vmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47ckl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjtme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sye2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2txo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1j16")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc1we"]
-size = Vector2(50, 80)
+size = Vector2(31, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h6sxm"]
-size = Vector2(52, 82)
+size = Vector2(29.5, 48)
 
 [node name="BurrowEnemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 script = ExtResource("1_xriem")
 maxHealth = 50
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gc1we")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.65625, 1.65625)
+sprite_frames = SubResource("SpriteFrames_jppax")
+frame_progress = 0.784562
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_8s0nt")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 2)
+shape = SubResource("RectangleShape2D_gc1we")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.75, 2)
 shape = SubResource("RectangleShape2D_h6sxm")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

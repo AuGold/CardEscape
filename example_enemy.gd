@@ -13,6 +13,7 @@ const GRAVITY = 400.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentHealth = maxHealth
+	
 	pass # Replace with function body.
 
 func _process(delta):
@@ -26,14 +27,20 @@ func _process(delta):
 		if(randomDirection >= 1 and randomDirection <= 8):
 			velocity.x = -speed
 			isMoving = true
+			$AnimatedSprite2D.stop()
 		elif(randomDirection >= 9 and randomDirection <= 16):
 			velocity.x = speed
 			isMoving = true
+			$AnimatedSprite2D.stop()
 		elif(randomDirection >= 17 and randomDirection <= 24):
 			velocity.x = 0
 			isMoving = true
+			$AnimatedSprite2D.stop()
 		else:
+			$AnimatedSprite2D.play("default")
 			velocity.y = -jumpSpeed
+			isMoving = true
+			
 	
 		move_and_slide()
 	else:
@@ -49,7 +56,7 @@ func _on_area_2d_body_entered(body):
 
 func changeHealth(changeValue, node):
 	currentHealth += changeValue
-	self.modulate = Color8(255,0,0)
+	self.modulate = Color8(29,112,255)
 	if(currentHealth <= 0):
 		hide()
 		node.enemiesKilled += 1
