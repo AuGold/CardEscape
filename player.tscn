@@ -283,7 +283,7 @@ size = Vector2(58, 54)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dgdvn")
 jumpSpeed = 250
-maxHealth = 50
+maxHealth = 100
 attackDamage = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -312,6 +312,7 @@ zoom = Vector2(1.7, 1.7)
 
 [node name="PunchCard" type="Sprite2D" parent="."]
 visible = false
+z_index = 10
 texture_filter = 1
 position = Vector2(0, -86)
 scale = Vector2(9.23333, 9.23333)

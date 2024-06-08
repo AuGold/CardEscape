@@ -17,7 +17,7 @@ layer_0/tile_data = PackedInt32Array(-458752, 393216, 2, -393216, 393216, 2, -32
 position = Vector2(140, 582)
 
 [node name="FirstBoss" parent="." instance=ExtResource("3_w77wl")]
-position = Vector2(868, 481)
+position = Vector2(867, 483)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_3fj8k")

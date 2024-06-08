@@ -186,34 +186,34 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73fiy"]
-size = Vector2(420.5, 158.5)
+size = Vector2(207.25, 77.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhgci"]
-size = Vector2(429.5, 171.5)
+size = Vector2(213.75, 83.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b1dwc"]
-size = Vector2(434, 416)
+size = Vector2(218, 199)
 
 [node name="ThirdBoss" type="CharacterBody2D"]
 script = ExtResource("1_wu1mo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1.00002, 0.999985)
-scale = Vector2(13.6875, 13.6875)
+position = Vector2(-3.8147e-06, -0.999996)
+scale = Vector2(6.67188, 6.67188)
 sprite_frames = SubResource("SpriteFrames_p5e83")
-frame = 3
-frame_progress = 0.0411731
+frame = 6
+frame_progress = 0.546295
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.75, 117.25)
+position = Vector2(1.625, 51.625)
 shape = SubResource("RectangleShape2D_73fiy")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(4.75, 115.75)
+position = Vector2(0.875, 51.875)
 shape = SubResource("RectangleShape2D_nhgci")
 
 [node name="BossHealth" type="ProgressBar" parent="Area2D"]
@@ -228,6 +228,6 @@ show_percentage = false
 [node name="BurrowArea" type="Area2D" parent="."]
 
 [node name="BurrowCollision" type="CollisionShape2D" parent="BurrowArea"]
-position = Vector2(7, -4)
+position = Vector2(2, -4.5)
 shape = SubResource("RectangleShape2D_b1dwc")
 disabled = true

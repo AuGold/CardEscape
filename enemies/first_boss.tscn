@@ -68,11 +68,10 @@ position = Vector2(-13, -4.375)
 shape = SubResource("RectangleShape2D_y02gl")
 
 [node name="BossHealth" type="ProgressBar" parent="Area2D"]
-visible = false
-offset_left = -75.0
-offset_top = -223.0
-offset_right = 77.0
-offset_bottom = -196.0
+offset_left = -88.0
+offset_top = -171.0
+offset_right = 64.0
+offset_bottom = -144.0
 value = 100.0
 show_percentage = false
 

@@ -7,6 +7,8 @@ extends CharacterBody2D
 var currentHealth
 var isMoving = false
 var changeMove = 100
+var playerTookDamage = false
+var playerDamageTimer = 120
 
 const GRAVITY = 400.0
 @onready var player = $"../Player"
@@ -19,6 +21,12 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
+	
+	playerDamageTimer -= 1
+	if($Area2D.has_overlapping_bodies() == true && playerDamageTimer == 0):
+		playerTookDamage = false
+		for body in $Area2D.get_overlapping_bodies():
+			_on_area_2d_body_entered(body)
 	
 	velocity.y += delta * GRAVITY
 	
@@ -55,6 +63,8 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if(body.name == "Player"):
 		body.changeHealth(-5)
+		playerTookDamage = true
+		playerDamageTimer = 120
 	pass # Replace with function body.
 
 func changeHealth(changeValue, node):

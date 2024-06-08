@@ -89,10 +89,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_johi8"]
-size = Vector2(409, 269)
+size = Vector2(231.625, 172.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ewm1f"]
-size = Vector2(421, 279)
+size = Vector2(241.5, 180.5)
 
 [node name="SecondBoss" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
@@ -103,28 +103,28 @@ maxHealth = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1.00002, 0.999985)
-scale = Vector2(13.6875, 13.6875)
+position = Vector2(0, -1)
+scale = Vector2(9.25, 9.25)
 sprite_frames = SubResource("SpriteFrames_ncw3w")
 frame_progress = 0.115888
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.5, -9.5)
+position = Vector2(-0.8125, -8.1875)
 shape = SubResource("RectangleShape2D_johi8")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-4.5, -11.5)
+position = Vector2(0.25, -9.25)
 shape = SubResource("RectangleShape2D_ewm1f")
 
 [node name="BossHealth" type="ProgressBar" parent="Area2D"]
 visible = false
-offset_left = -75.0
-offset_top = -223.0
-offset_right = 77.0
-offset_bottom = -196.0
+offset_left = -73.0
+offset_top = -125.0
+offset_right = 79.0
+offset_bottom = -98.0
 value = 100.0
 show_percentage = false
 

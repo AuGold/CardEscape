@@ -23,17 +23,15 @@ var frozen = false
 var frozenTimer = 0
 var ability = "bullet"
 var addX = 25
-var whipActive = false
-var currentWhip
+var infrontValue = addX
+var bulletSpeed = speedValue
 
 var bullet = preload("res://bullet.tscn")
 var deathScreen = preload("res://game_over.tscn")
-var whip = preload("res://whip.tscn")
 const GRAVITY = 400.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	screenSize = get_viewport().get_visible_rect().size
 	$CanvasLayer/HPBar.max_value = maxHealth
 	$CanvasLayer/HPBar.value = currentHealth
@@ -53,19 +51,17 @@ func _physics_process(delta):
 			velocity.x = speed
 			facing = "right"
 			$AnimatedSprite2D.flip_h = false
-			addX = 60
+			addX = infrontValue
 			$AnimatedSprite2D.play("default")
 		elif Input.is_action_pressed("goLeft"):
 			velocity.x = -speed
 			facing = "left"
 			$AnimatedSprite2D.flip_h = true
-			addX = -60
+			addX = -infrontValue
 			$AnimatedSprite2D.play("default")
 		else:
 			velocity.x = 0
 			$AnimatedSprite2D.pause()
-			
-		var w = whip.instantiate()
 		
 		if Input.is_action_pressed("fire") and didFire == false and ability == "bullet":
 			var rotated = 0
@@ -114,6 +110,7 @@ func changeHealth(changeValue):
 
 func killedBoss():
 	isActive = false
+	$AudioStreamPlayer2D.stop()
 	
 	punchesObtained += 1
 	if(punchesObtained == 1):
@@ -125,13 +122,37 @@ func killedBoss():
 		$AudioStreamPlayer2D.play()
 		await TextBoxes.popUpText("Excellent job Rover-" + str(TextBoxes.roverNumber) + "! It looks like you planted your first sapling.")
 		$PunchCard.visible = true
-		await TextBoxes.pressedMouse
 		await TextBoxes.popUpText("Your Sapling Punch Card should have filled out the first slot. This should augment your rover for the rest of the mission.")
 		await TextBoxes.popUpText("Keep going Rover-" +str(TextBoxes.roverNumber) + ". We're all counting on you.")
 		
-		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability)
+		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
 		get_tree().change_scene_to_file("res://levels/level_2.tscn")
-	
+	if(punchesObtained == 2):
+		$PunchCard.texture = load("res://assests/Punch2.png")
+		bulletSpeed += 200
+		await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + "! If you can hear this, your current location is perfect to plant the second sapling. Activate planting protocol!")
+		$AnimatedSprite2D.play("plantTree")
+		$AudioStreamPlayer2D.stream = load("res://sounds/plantTree.mp3")
+		$AudioStreamPlayer2D.play()
+		await TextBoxes.popUpText("Excellent job Rover-" + str(TextBoxes.roverNumber) + "! It looks like you planted your second sapling.")
+		$PunchCard.visible = true
+		await TextBoxes.popUpText("Your Sapling Punch Card should have filled out the second slot. This should augment your rover for the rest of the mission.")
+		await TextBoxes.popUpText("Keep going Rover-" +str(TextBoxes.roverNumber) + ". We're all counting on you.")
+		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
+		get_tree().change_scene_to_file("res://levels/level_3.tscn")
+	if(punchesObtained == 3):
+		$PunchCard.texture = load("res://assests/Punch3.png")
+		attackDamage += 10
+		await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + "! If you can hear this, your current location is perfect to plant the third sapling. Activate planting protocol!")
+		$AnimatedSprite2D.play("plantTree")
+		$AudioStreamPlayer2D.stream = load("res://sounds/plantTree.mp3")
+		$AudioStreamPlayer2D.play()
+		await TextBoxes.popUpText("Excellent job Rover-" + str(TextBoxes.roverNumber) + "! It looks like you planted your third sapling.")
+		$PunchCard.visible = true
+		await TextBoxes.popUpText("Your Sapling Punch Card should have filled out the third slot. This should augment your rover for the rest of the mission.")
+		await TextBoxes.popUpText("Keep going Rover-" +str(TextBoxes.roverNumber) + ". We're all counting on you.")
+		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
+		get_tree().change_scene_to_file("res://levels/level_4.tscn")
 
 func freezeMove(number):
 	if(frozen == false):
@@ -149,7 +170,7 @@ func gameOver():
 	isActive = false
 	velocity.x = 0
 	
-	done.find_child("CardPunched").text = "You got your card punched " + str(punchesObtained) + " times!"
+	$PunchCard.visible = true
 	done.find_child("EnemiesKilled").text = "You killed " + str(enemiesKilled) + " enemies!"
 	done.playerNode = self
 	get_tree().root.add_child(done)
