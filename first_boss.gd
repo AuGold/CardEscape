@@ -32,15 +32,15 @@ func _process(delta):
 			if(directionToMove < 0):
 				velocity.x = -speed
 				isMoving = true
-				$AnimatedSprite2D.stop()
+				$AnimatedSprite2D.play("default")
 			elif(directionToMove > 0):
 				velocity.x = speed
 				isMoving = true
-				$AnimatedSprite2D.stop()
+				$AnimatedSprite2D.play("default")
 		elif(randomDirection >= 17 and randomDirection <= 24):
 			velocity.x = 0
 			isMoving = true
-			$AnimatedSprite2D.play("default")
+			$AnimatedSprite2D.stop()
 		else:
 			velocity.y = -jumpSpeed
 			$AnimatedSprite2D.stop()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://bullet.gd" id="1_a6yhe"]
 [ext_resource type="Texture2D" uid="uid://77os11g0i8wg" path="res://assests/bulletPlaceholder.png" id="1_sfcn3"]
 
-[node name="Bullet" type="CharacterBody2D"]
+[node name="Bullet" type="Area2D"]
 collision_mask = 3
 script = ExtResource("1_a6yhe")
 
@@ -18,13 +18,4 @@ scale = Vector2(0.414757, 0.421535)
 build_mode = 1
 polygon = PackedVector2Array(27, -1, -19, 27, -19, -28)
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_mask = 3
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2(0, 5.96046e-08)
-scale = Vector2(0.432355, 0.432355)
-build_mode = 1
-polygon = PackedVector2Array(30, -1, -21, 32, -21, -31)
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

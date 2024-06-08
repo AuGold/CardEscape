@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b56m7n026hn8a"
-path="res://.godot/imported/MiniBoss.png-8383da2378abe91d9d0767715d65d339.ctex"
+uid="uid://lo64vuuboib7"
+path="res://.godot/imported/Boss3Burrow.png-c11424944fa945b9b6829a317e4dc75d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/MiniBoss.png"
-dest_files=["res://.godot/imported/MiniBoss.png-8383da2378abe91d9d0767715d65d339.ctex"]
+source_file="res://assests/Boss3Burrow.png"
+dest_files=["res://.godot/imported/Boss3Burrow.png-c11424944fa945b9b6829a317e4dc75d.ctex"]
 
 [params]
 

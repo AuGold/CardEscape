@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://du2cd5d2gc1er"]
 
 [ext_resource type="Script" path="res://first_boss.gd" id="1_lh56p"]
-[ext_resource type="Texture2D" uid="uid://dt4l65soj7th1" path="res://assests/MiniBoss2.png" id="2_unrng"]
+[ext_resource type="Texture2D" path="res://assests/MiniBoss2.png" id="2_unrng"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xuk7x"]
 atlas = ExtResource("2_unrng")
@@ -40,30 +40,31 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvmye"]
-size = Vector2(334, 424)
+size = Vector2(209, 265)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y02gl"]
-size = Vector2(346, 434.5)
+size = Vector2(220, 277.25)
 
-[node name="FirstBoss" type="CharacterBody2D"]
+[node name="FirstBoss" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_lh56p")
+maxHealth = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-2, -2)
-scale = Vector2(13.6875, 13.6875)
+position = Vector2(1.00001, -1.99999)
+scale = Vector2(8.5, 8.5)
 sprite_frames = SubResource("SpriteFrames_6ui26")
 frame_progress = 0.811326
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-21, -4)
+position = Vector2(-10.5, -4.5)
 shape = SubResource("RectangleShape2D_lvmye")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-20, -2.75)
+position = Vector2(-13, -4.375)
 shape = SubResource("RectangleShape2D_y02gl")
 
 [node name="BossHealth" type="ProgressBar" parent="Area2D"]
@@ -74,3 +75,5 @@ offset_right = 77.0
 offset_bottom = -196.0
 value = 100.0
 show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

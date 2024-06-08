@@ -9,11 +9,14 @@ var isMoving = false
 var changeMove = 100
 var isBurrowed = false
 
+signal finishedAnimation
+
 const GRAVITY = 400.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentHealth = maxHealth
+	$AnimatedSprite2D.stop()
 	pass # Replace with function body.
 
 func _process(_delta):
@@ -25,26 +28,30 @@ func _process(_delta):
 		if(randomDirection >= 1 and randomDirection <= 8):
 			velocity.x = -speed
 			isMoving = true
-			$AnimatedSprite2D.stop()
+			$AnimatedSprite2D.play("default")
+			$AnimatedSprite2D.flip_h = true
 		elif(randomDirection >= 9 and randomDirection <= 16):
 			velocity.x = speed
 			isMoving = true
-			$AnimatedSprite2D.stop()
+			$AnimatedSprite2D.play("default")
+			$AnimatedSprite2D.flip_h = false
 		elif(randomDirection >= 17 and randomDirection <= 24):
 			velocity.x = 0
 			isMoving = true
 			$AnimatedSprite2D.stop()
 		else:
 			if(isBurrowed == false):
+				velocity.x = 0
+				$AnimatedSprite2D.stop()
 				position.y += 200
 				speed = 300
 				isBurrowed = true
-				$AnimatedSprite2D.stop()
 			else:
+				velocity.x = 0
 				position.y -= 200
 				isBurrowed = false
 				speed = 100
-				$AnimatedSprite2D.play("default")
+				$AnimatedSprite2D.stop()
 				isMoving = true
 	
 		move_and_slide()

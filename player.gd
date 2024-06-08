@@ -63,7 +63,7 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("default")
 		else:
 			velocity.x = 0
-			$AnimatedSprite2D.stop()
+			$AnimatedSprite2D.pause()
 			
 		var w = whip.instantiate()
 		

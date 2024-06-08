@@ -42,6 +42,6 @@ func _on_area_2d_body_entered(body):
 	if(body.name == "Player"):
 		$Player.isActive = false
 		ChangeScenes.changeScenes($Player.isActive, $Player.currentHealth, $Player.punchesObtained, $Player.enemiesKilled, $Player.bulletsFired, $Player.ability)
-		get_tree().change_scene_to_file("res://level_2.tscn")
+		get_tree().change_scene_to_file("res://first_boss_stage.tscn")
 		
 		pass # Replace with function body.

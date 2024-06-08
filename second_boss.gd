@@ -33,10 +33,12 @@ func _process(delta):
 				velocity.x = -speed
 				isMoving = true
 				$AnimatedSprite2D.stop()
+				$AnimatedSprite2D.flip_h = true
 			elif(directionToMove > 0):
 				velocity.x = speed
 				isMoving = true
 				$AnimatedSprite2D.stop()
+				$AnimatedSprite2D.flip_h = false
 		elif(randomDirection >= 17 and randomDirection <= 24):
 			velocity.x = 0
 			isMoving = true
@@ -55,6 +57,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if(body.name == "Player"):
 		body.changeHealth(-5)
+		body.freezeMove(3)
 	pass # Replace with function body.
 
 func changeHealth(changeValue, node):

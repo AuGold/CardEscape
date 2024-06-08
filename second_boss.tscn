@@ -1,50 +1,50 @@
 [gd_scene load_steps=17 format=3 uid="uid://dhh7mnb1itjqv"]
 
-[ext_resource type="Script" path="res://second_boss.gd" id="1_lv3kd"]
-[ext_resource type="Texture2D" uid="uid://b56m7n026hn8a" path="res://assests/MiniBoss.png" id="2_ppnmx"]
+[ext_resource type="Script" path="res://second_boss.gd" id="1_358ua"]
+[ext_resource type="Texture2D" path="res://assests/MiniBoss.png" id="2_q035u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mnqwc"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2kuuu"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_25so4"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4owfe"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ffks5"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iqyx1"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_50loj"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1onkh"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5120"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n47lv"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(0, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sj6ov"]
-atlas = ExtResource("2_ppnmx")
+atlas = ExtResource("2_q035u")
 region = Rect2(32, 96, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ncw3w"]
@@ -96,7 +96,7 @@ size = Vector2(421, 279)
 
 [node name="SecondBoss" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-script = ExtResource("1_lv3kd")
+script = ExtResource("1_358ua")
 speed = 200
 jumpSpeed = 400
 maxHealth = 100
