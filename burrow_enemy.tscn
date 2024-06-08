@@ -96,7 +96,7 @@ maxHealth = 50
 texture_filter = 1
 scale = Vector2(1.65625, 1.65625)
 sprite_frames = SubResource("SpriteFrames_jppax")
-frame_progress = 0.784562
+frame_progress = 0.998762
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 2)
