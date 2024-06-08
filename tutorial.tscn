@@ -632,16 +632,20 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_2qsio")
 
 [node name="Tutorial" type="Node2D"]
+light_mask = 3
+visibility_layer = 3
 script = ExtResource("1_ftpkt")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1967.25, 550.5)
 shape = SubResource("RectangleShape2D_ftn6f")
 
 [node name="Player" parent="." instance=ExtResource("1_q4mge")]
-position = Vector2(41, 566)
+position = Vector2(-465, 36)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hjjgy")

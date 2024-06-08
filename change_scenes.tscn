@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2h640lk3sscx"]
+
+[ext_resource type="Script" path="res://ChangeScenes.gd" id="1_mqpyu"]
+
+[node name="ChangeScenes" type="Node"]
+script = ExtResource("1_mqpyu")
