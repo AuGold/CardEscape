@@ -6,6 +6,7 @@ func _ready():
 	$Player.find_child("HPBar").value = $Player.currentHealth
 	$Player.isActive = true
 	$Player.find_child("AudioStreamPlayer2D").stream = load("res://sounds/Boss.wav")
+	$Player.find_child("AudioStreamPlayer2D").volume_db = -10.0
 	$Player.find_child("AudioStreamPlayer2D").play()
 
 func showTree():
