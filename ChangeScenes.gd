@@ -8,8 +8,10 @@ var bulletsFired
 var ability
 var bulletSpeed
 var attackDamage
+var cardTexture
+var bulletTexture
 
-func changeScenes(tempIsActive, tempHealth, tempPunches, tempKills, tempBullets, tempAbility, tempBSpeed, tempDamage):
+func changeScenes(tempIsActive, tempHealth, tempPunches, tempKills, tempBullets, tempAbility, tempBSpeed, tempDamage, tempCard, tempBullet):
 	isActive = tempIsActive
 	currentHealth = tempHealth
 	punchesObtained = tempPunches
@@ -18,6 +20,8 @@ func changeScenes(tempIsActive, tempHealth, tempPunches, tempKills, tempBullets,
 	ability = tempAbility
 	bulletSpeed = tempBSpeed
 	attackDamage = tempDamage
+	cardTexture = tempCard
+	bulletTexture = tempBullet
 	pass
 
 func getVars(node):
@@ -29,3 +33,5 @@ func getVars(node):
 	node.ability = ability
 	node.bulletSpeed = bulletSpeed
 	node.attackDamage = attackDamage
+	node.cardTexture = cardTexture
+	node.bulletTexture = bulletTexture

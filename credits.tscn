@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv3ij80gmkmwc"]
+
+[ext_resource type="Script" path="res://credits.gd" id="1_12mim"]
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_12mim")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -971.0
+offset_top = -358.0
+offset_right = 972.0
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Design: CreativeNess
+
+Programming: AuGold
+
+Art:
+Tilemap: https://heosphorus.itch.io/
+Background Art: Quantiset
+All Other Assets: CreativeNess
+
+Audio:
+Credits Music: Groove Music by benpm -- https://freesound.org/s/203099/ -- License: Attribution 4.0
+Menu Music: Ambient loop.mp3 by bebeto -- https://freesound.org/s/554/ -- License: Attribution NonCommercial 3.0
+Boss Music: loop029.wav by bebeto -- https://freesound.org/s/24046/ -- License: Attribution NonCommercial 3.0
+Background Music: Loop003-jungle.wav by bebeto -- https://freesound.org/s/18973/ -- License: Attribution NonCommercial 3.0
+Planting Seed Sound: Planting (Seeds).mp3 by wyronroberth -- https://freesound.org/s/516249/ -- License: Creative Commons 3.0"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Main Menu
+"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

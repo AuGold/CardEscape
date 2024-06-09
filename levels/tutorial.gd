@@ -15,7 +15,7 @@ func _ready():
 	$Player.find_child("PunchCard").visible = true
 	await TextBoxes.pressedMouse
 	await TextBoxes.popUpText("As you progress around the surface of Mars and plant each sapling, your Sapling Punch Card will help you adapt to whatever you may find on your mission.")
-	await TextBoxes.popUpText("Currently, we are reading in front of you signs of life, Rover-" + str(TextBoxes.roverNumber) + ". They appear to be tiny creatures who jump around. Be careful, if your hull becomes compromised prior to planting each sapling, your mission will result in a failure.")
+	await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + ", there appears to be life forms in front of you. They semm to be tiny creatures who jump around. Be careful, if your hull becomes compromised prior to planting each sapling, your mission will result in a failure.")
 	await TextBoxes.popUpText("If you must defend yourself, we provided you with tools to do so. Press the Spacebar on your rover and you'll be sure to take care of those creatures.")
 	await TextBoxes.popUpText("Good luck, Rover-" + str(TextBoxes.roverNumber) + ". All of us here at Cosmic Mana-Team are counting on you!")
 	await TextBoxes.popUpText("And remember, you move around using the W, A, S, and D keys!")
@@ -26,6 +26,7 @@ func _ready():
 	$Player.find_child("AudioStreamPlayer2D").stream = load("res://sounds/Game_Background.wav")
 	$Player.find_child("AudioStreamPlayer2D").play()
 	spawnEnemies()
+	$BlockingTile.queue_free()
 	pass # Replace with function body.
 
 
@@ -45,7 +46,7 @@ func spawnEnemies():
 func _on_area_2d_body_entered(body):
 	if(body.name == "Player"):
 		$Player.isActive = false
-		ChangeScenes.changeScenes($Player.isActive, $Player.currentHealth, $Player.punchesObtained, $Player.enemiesKilled, $Player.bulletsFired, $Player.ability, $Player.bulletSpeed, $Player.attackDamage)
+		ChangeScenes.changeScenes($Player.isActive, $Player.currentHealth, $Player.punchesObtained, $Player.enemiesKilled, $Player.bulletsFired, $Player.ability, $Player.bulletSpeed, $Player.attackDamage, $Player.cardTexture, $Player.bulletTexture)
 		get_tree().change_scene_to_file("res://levels/first_boss_stage.tscn")
 		
 		pass # Replace with function body.

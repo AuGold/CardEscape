@@ -10,8 +10,7 @@ func _ready():
 	ChangeScenes.getVars($Player)
 	$Player.find_child("HPBar").value = $Player.currentHealth
 	
-	await TextBoxes.popUpText("Keep going Rover-" + str(TextBoxes.roverNumber) + "!")
-	await TextBoxes.popUpText("Now that you've made it to this plateau, we are reading new life forms present. They seem to burrow underground, so keep an eye out!")
+	await TextBoxes.popUpText("Keep going Rover-" + str(TextBoxes.roverNumber) + "! Look for a spot to plant the last sapling!")
 	await TextBoxes.popUpText("Good luck Rover-" + str(TextBoxes.roverNumber) + ". We're all counting on you.")
 	TextBoxes.find_child("TextLayer").visible = false
 	
@@ -19,6 +18,7 @@ func _ready():
 	$Player.find_child("AudioStreamPlayer2D").stream = load("res://sounds/Game_Background.wav")
 	$Player.find_child("AudioStreamPlayer2D").play()
 	spawnEnemies()
+	$BlockingTile.queue_free()
 
 func spawnEnemies():
 	for n in basicEnemiesToSpawn:
@@ -44,7 +44,7 @@ func spawnEnemies():
 func _on_area_2d_body_entered(body):
 	if(body.name == "Player"):
 		$Player.isActive = false
-		ChangeScenes.changeScenes($Player.isActive, $Player.currentHealth, $Player.punchesObtained, $Player.enemiesKilled, $Player.bulletsFired, $Player.ability, $Player.bulletSpeed, $Player.attackDamage)
+		ChangeScenes.changeScenes($Player.isActive, $Player.currentHealth, $Player.punchesObtained, $Player.enemiesKilled, $Player.bulletsFired, $Player.ability, $Player.bulletSpeed, $Player.attackDamage, $Player.cardTexture, $Player.bulletTexture)
 		get_tree().change_scene_to_file("res://levels/final_boss_stage.tscn")
 		
 		pass # Replace with function body.

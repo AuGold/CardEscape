@@ -25,6 +25,8 @@ var ability = "bullet"
 var addX = 25
 var infrontValue = addX
 var bulletSpeed = speedValue
+var bulletTexture = "res://assests/Projectile.png"
+var cardTexture = "res://assests/Punch0.png"
 
 var bullet = preload("res://bullet.tscn")
 var deathScreen = preload("res://game_over.tscn")
@@ -69,6 +71,7 @@ func _physics_process(delta):
 				rotated = PI
 			for n in bulletsFired:
 				var b = bullet.instantiate()
+				b.find_child("Sprite2D").texture = load(bulletTexture)
 				b.position = Vector2(self.position.x + addX, self.position.y)
 				b.rotation = rotated
 				b.visible = true
@@ -117,6 +120,7 @@ func killedBoss():
 	punchesObtained += 1
 	if(punchesObtained == 1):
 		$PunchCard.texture = load("res://assests/Punch1.png")
+		cardTexture = "res://assests/Punch1.png"
 		bulletsFired += 1
 		await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + "! If you can hear this, your current location is perfect to plant the first sapling. Activate planting protocol!")
 		$AnimatedSprite2D.play("plantTree")
@@ -132,10 +136,11 @@ func killedBoss():
 		
 		await get_tree().create_timer(3).timeout
 		
-		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
+		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage, cardTexture, bulletTexture)
 		get_tree().change_scene_to_file("res://levels/level_2.tscn")
 	if(punchesObtained == 2):
 		$PunchCard.texture = load("res://assests/Punch2.png")
+		cardTexture = "res://assests/Punch2.png"
 		bulletSpeed += 200
 		await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + "! If you can hear this, your current location is perfect to plant the second sapling. Activate planting protocol!")
 		$AnimatedSprite2D.play("plantTree")
@@ -150,10 +155,12 @@ func killedBoss():
 		
 		await get_tree().create_timer(3).timeout
 		
-		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
+		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage, cardTexture, bulletTexture)
 		get_tree().change_scene_to_file("res://levels/level_3.tscn")
 	if(punchesObtained == 3):
 		$PunchCard.texture = load("res://assests/Punch3.png")
+		cardTexture = "res://assests/Punch3.png"
+		bulletTexture = "res://assests/Projectile-Piercing.png"
 		attackDamage += 10
 		await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + "! If you can hear this, your current location is perfect to plant the third sapling. Activate planting protocol!")
 		$AnimatedSprite2D.play("plantTree")
@@ -167,22 +174,24 @@ func killedBoss():
 		get_tree().current_scene.showTree()
 		
 		await get_tree().create_timer(3).timeout
-		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
+		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage, cardTexture, bulletTexture)
 		get_tree().change_scene_to_file("res://levels/level_4.tscn")
 	if(punchesObtained == 4):
 		$PunchCard.texture = load("res://assests/Punch4.png")
+		cardTexture = "res://assests/Punch4.png"
 		await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + "! If you can hear this, your current location is perfect to plant the last sapling. Activate planting protocol!")
 		$AnimatedSprite2D.play("plantTree")
 		$AudioStreamPlayer2D.stream = load("res://sounds/plantTree.mp3")
 		$AudioStreamPlayer2D.play()
 		await TextBoxes.popUpText("Excellent job Rover-" + str(TextBoxes.roverNumber) + "! It looks like you planted every sapling!")
 		$PunchCard.visible = true
-		#do something else
 		TextBoxes.pressedMouse
 		$PunchCard.visible = false
 		get_tree().current_scene.showTree()
 		
 		await get_tree().create_timer(3).timeout
+		
+		gameOver()
 
 func freezeMove(number):
 	if(frozen == false):
@@ -200,6 +209,10 @@ func gameOver():
 	isActive = false
 	velocity.x = 0
 	
+	if(punchesObtained >= 4):
+		done.find_child("TextWin").visible = true
+	
+	$PunchCard.texture = load(cardTexture)
 	$PunchCard.visible = true
 	done.find_child("EnemiesKilled").text = "You killed " + str(enemiesKilled) + " enemies!"
 	done.playerNode = self

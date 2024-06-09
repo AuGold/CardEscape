@@ -347,10 +347,10 @@ layer_0/tile_data = PackedInt32Array(2031728, 393216, 2, 2097264, 393216, 2, 216
 position = Vector2(-554, 565)
 
 [node name="ExampleEnemy" parent="." instance=ExtResource("4_23hs0")]
-position = Vector2(701, 559)
+position = Vector2(684, 557)
 
 [node name="FreezeEnemy" parent="." instance=ExtResource("5_cfs5p")]
-position = Vector2(1057, 545)
+position = Vector2(367, 545)
 
 [node name="FrontTileMap" type="TileMap" parent="."]
 tile_set = ExtResource("7_hme76")
@@ -364,5 +364,10 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1967.25, 550.5)
 shape = SubResource("RectangleShape2D_w3hff")
+
+[node name="BlockingTile" type="TileMap" parent="."]
+tile_set = ExtResource("7_hme76")
+format = 2
+layer_0/tile_data = PackedInt32Array(2359306, 720896, 9, 2293770, 720896, 9, 2228234, 720896, 9, 2162698, 720896, 9, 2097162, 720896, 9, 2031626, 720896, 9, 1966090, 720896, 9, 1900554, 720896, 9, 1835018, 720896, 9, 1769482, 720896, 9, 1703946, 720896, 9, 1638410, 720896, 9, 1572874, 720896, 9, 1507338, 720896, 9, 1441802, 720896, 9, 1376266, 720896, 9, 1310730, 720896, 9, 1245194, 720896, 9, 1179658, 720896, 9, 1114122, 720896, 9, 1048586, 720896, 9, 983050, 720896, 9, 917514, 720896, 9, 851978, 720896, 9, 786442, 720896, 9)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

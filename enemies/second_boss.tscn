@@ -97,7 +97,7 @@ size = Vector2(241.5, 180.5)
 [node name="SecondBoss" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 script = ExtResource("1_358ua")
-speed = 200
+speed = 220
 maxHealth = 150
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -19,6 +19,7 @@ func _ready():
 	$Player.find_child("AudioStreamPlayer2D").stream = load("res://sounds/Game_Background.wav")
 	$Player.find_child("AudioStreamPlayer2D").play()
 	spawnEnemies()
+	$BlockingTile.queue_free()
 
 func spawnEnemies():
 	for n in basicEnemiesToSpawn:
@@ -44,7 +45,7 @@ func spawnEnemies():
 func _on_area_2d_body_entered(body):
 	if(body.name == "Player"):
 		$Player.isActive = false
-		ChangeScenes.changeScenes($Player.isActive, $Player.currentHealth, $Player.punchesObtained, $Player.enemiesKilled, $Player.bulletsFired, $Player.ability, $Player.bulletSpeed, $Player.attackDamage)
+		ChangeScenes.changeScenes($Player.isActive, $Player.currentHealth, $Player.punchesObtained, $Player.enemiesKilled, $Player.bulletsFired, $Player.ability, $Player.bulletSpeed, $Player.attackDamage, $Player.cardTexture, $Player.bulletTexture)
 		get_tree().change_scene_to_file("res://levels/third_boss_stage.tscn")
 		
 		pass # Replace with function body.

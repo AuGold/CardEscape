@@ -52,4 +52,18 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
+[node name="TextWin" type="Label" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.021
+offset_left = -20.0
+offset_top = 151.0
+offset_right = 20.0
+offset_bottom = 151.32
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "You have successfully terraformed Mars!"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

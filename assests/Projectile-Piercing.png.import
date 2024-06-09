@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://77os11g0i8wg"
-path="res://.godot/imported/bulletPlaceholder.png-70444edb1f6823e8dc435002adb13963.ctex"
+uid="uid://cximoqnvo0rse"
+path="res://.godot/imported/Projectile-Piercing.png-44532a78ea8f8270aab2f67a48733f04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/bulletPlaceholder.png"
-dest_files=["res://.godot/imported/bulletPlaceholder.png-70444edb1f6823e8dc435002adb13963.ctex"]
+source_file="res://assests/Projectile-Piercing.png"
+dest_files=["res://.godot/imported/Projectile-Piercing.png-44532a78ea8f8270aab2f67a48733f04.ctex"]
 
 [params]
 
