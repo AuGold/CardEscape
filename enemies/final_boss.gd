@@ -70,7 +70,6 @@ func _process(delta):
 			elif(stayBurrowed < 0):
 				velocity.x = 0
 				#position.y -= 200
-				isBurrowed = false
 				speed = 100
 				$AnimatedSprite2D.stop()
 				isMoving = true
@@ -78,6 +77,7 @@ func _process(delta):
 				$Area2D/CollisionShape2D.set_deferred("disabled", false)
 				$CollisionShape2D.set_deferred("disabled", false)
 				$Sprite2D.visible = false
+				isBurrowed = false
 	
 		move_and_slide()
 	else:
