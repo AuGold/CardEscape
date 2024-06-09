@@ -7,3 +7,7 @@ func _ready():
 	$Player.isActive = true
 	$Player.find_child("AudioStreamPlayer2D").stream = load("res://sounds/Boss.wav")
 	$Player.find_child("AudioStreamPlayer2D").play()
+
+func showTree():
+	$SaplingTree.visible = true
+	$SaplingTree.play("default")

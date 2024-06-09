@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcrprg51atkr3"]
+
+[ext_resource type="Script" path="res://enemies/final_boss.gd" id="1_1ble7"]
+[ext_resource type="Texture2D" uid="uid://boy8grauqjhfa" path="res://assests/Final_Boss.png" id="1_e0q2a"]
+[ext_resource type="Texture2D" uid="uid://21st1lhrbi7l" path="res://assests/BurrowSprite.png" id="3_y3di1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hokqi"]
+atlas = ExtResource("1_e0q2a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3pn7"]
+atlas = ExtResource("1_e0q2a")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p5e83"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hokqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3pn7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73fiy"]
+size = Vector2(153.625, 120.625)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhgci"]
+size = Vector2(157.875, 126.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kwqd"]
+size = Vector2(215, 63)
+
+[node name="FinalBoss" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+script = ExtResource("1_1ble7")
+speed = 200
+maxHealth = 400
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, 1.90735e-06)
+scale = Vector2(5.05273, 5.05273)
+sprite_frames = SubResource("SpriteFrames_p5e83")
+frame = 1
+frame_progress = 0.432414
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.1875, 18.3125)
+shape = SubResource("RectangleShape2D_73fiy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.0625, 19.4375)
+shape = SubResource("RectangleShape2D_nhgci")
+
+[node name="BossHealth" type="ProgressBar" parent="Area2D"]
+offset_left = -74.0
+offset_top = -73.0
+offset_right = 78.0
+offset_bottom = -46.0
+value = 100.0
+show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1, 9)
+scale = Vector2(2.48438, 2.48438)
+texture = ExtResource("3_y3di1")
+
+[node name="BurrowedArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="BurrowedCollision" type="CollisionShape2D" parent="BurrowedArea"]
+position = Vector2(1.5, 153.5)
+shape = SubResource("RectangleShape2D_1kwqd")
+
+[connection signal="body_entered" from="BurrowedArea" to="." method="_on_burrowed_area_body_entered"]

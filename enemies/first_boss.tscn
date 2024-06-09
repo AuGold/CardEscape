@@ -46,7 +46,9 @@ size = Vector2(209, 265)
 size = Vector2(220, 277.25)
 
 [node name="FirstBoss" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
 script = ExtResource("1_lh56p")
+jumpSpeed = 350
 maxHealth = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

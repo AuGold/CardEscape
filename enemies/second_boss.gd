@@ -27,25 +27,24 @@ func _process(delta):
 		changeMove = 100
 		
 		var randomDirection = randf_range(1,30)
-		if(randomDirection >= 1 and randomDirection <= 16):
-			var directionToMove = player.position.x - self.position.x
-			if(directionToMove < 0):
-				velocity.x = -speed
-				isMoving = true
-				$AnimatedSprite2D.stop()
-				$AnimatedSprite2D.flip_h = true
-			elif(directionToMove > 0):
-				velocity.x = speed
-				isMoving = true
-				$AnimatedSprite2D.stop()
-				$AnimatedSprite2D.flip_h = false
+		if(randomDirection >= 1 and randomDirection <= 8):
+			velocity.x = -speed
+			isMoving = true
+			$AnimatedSprite2D.stop()
+			$AnimatedSprite2D.flip_h = true
+		elif(randomDirection >= 9 and randomDirection <= 16):
+			velocity.x = speed
+			isMoving = true
+			$AnimatedSprite2D.stop()
+			$AnimatedSprite2D.flip_h = false
 		elif(randomDirection >= 17 and randomDirection <= 24):
 			velocity.x = 0
 			isMoving = true
 			$AnimatedSprite2D.play("default")
 		else:
-			velocity.y = -jumpSpeed
 			$AnimatedSprite2D.stop()
+			velocity.y = -jumpSpeed
+			isMoving = true
 	
 		move_and_slide()
 	else:

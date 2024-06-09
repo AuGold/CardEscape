@@ -1,9 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvgehfihnobdn"]
+[gd_scene load_steps=12 format=3 uid="uid://dvgehfihnobdn"]
 
 [ext_resource type="Script" path="res://levels/first_boss_stage.gd" id="1_5n0ft"]
 [ext_resource type="TileSet" uid="uid://ch7sl7lpfwlmm" path="res://assests/MarsTileSet.tres" id="2_skrww"]
 [ext_resource type="PackedScene" uid="uid://prltuud73o1p" path="res://player.tscn" id="3_r4ixy"]
 [ext_resource type="PackedScene" uid="uid://dhh7mnb1itjqv" path="res://enemies/second_boss.tscn" id="4_sxeuv"]
+[ext_resource type="Texture2D" uid="uid://cx2p0uawf62dc" path="res://assests/Tree_Growing.png" id="5_ed8tf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_126uc"]
+atlas = ExtResource("5_ed8tf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot30f"]
+atlas = ExtResource("5_ed8tf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwwkp"]
+atlas = ExtResource("5_ed8tf")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g53r"]
+atlas = ExtResource("5_ed8tf")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_750wl"]
+atlas = ExtResource("5_ed8tf")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o3wcb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_126uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot30f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwwkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g53r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_750wl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="SecondBossStage" type="Node2D"]
 script = ExtResource("1_5n0ft")
@@ -23,3 +67,10 @@ layer_0/tile_data = PackedInt32Array(2490368, 65536, 1, 2555904, 65536, 2, 26214
 
 [node name="SecondBoss" parent="." instance=ExtResource("4_sxeuv")]
 position = Vector2(771, 534)
+
+[node name="SaplingTree" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(582, 530)
+scale = Vector2(6.45313, 6.45313)
+sprite_frames = SubResource("SpriteFrames_o3wcb")

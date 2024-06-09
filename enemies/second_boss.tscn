@@ -98,8 +98,7 @@ size = Vector2(241.5, 180.5)
 collision_layer = 2
 script = ExtResource("1_358ua")
 speed = 200
-jumpSpeed = 400
-maxHealth = 100
+maxHealth = 150
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

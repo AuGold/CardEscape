@@ -21,6 +21,8 @@ func _ready():
 
 func _process(_delta):
 	
+	#velocity.y += delta * GRAVITY
+	
 	if(isMoving == false):
 		changeMove = 100
 		
@@ -43,12 +45,20 @@ func _process(_delta):
 			if(isBurrowed == false):
 				velocity.x = 0
 				$AnimatedSprite2D.stop()
-				position.y += 200
+				#position.y += 200
+				$AnimatedSprite2D.visible = false
+				$Area2D/CollisionShape2D.set_deferred("disabled", true)
+				$CollisionShape2D.set_deferred("disabled", true)
+				$BurrowSprite.visible = true
 				speed = 300
 				isBurrowed = true
 			else:
 				velocity.x = 0
-				position.y -= 200
+				#position.y -= 200
+				$AnimatedSprite2D.visible = true
+				$Area2D/CollisionShape2D.set_deferred("disabled", false)
+				$CollisionShape2D.set_deferred("disabled", false)
+				$BurrowSprite.visible = false
 				isBurrowed = false
 				speed = 100
 				$AnimatedSprite2D.stop()

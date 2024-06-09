@@ -36,7 +36,7 @@ func _ready():
 	$CanvasLayer/HPBar.max_value = maxHealth
 	$CanvasLayer/HPBar.value = currentHealth
 	speed = speedValue
-	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D.play("landing")
 	pass # Replace with function body.
 
 
@@ -72,7 +72,7 @@ func _physics_process(delta):
 				b.position = Vector2(self.position.x + addX, self.position.y)
 				b.rotation = rotated
 				b.visible = true
-				b.velocity = Vector2(speedValue+50, 0).rotated(b.rotation)
+				b.velocity = Vector2(bulletSpeed+50, 0).rotated(b.rotation)
 				b.bulletOwner = self
 				b.damage = attackDamage
 				get_tree().root.add_child(b)
@@ -100,7 +100,8 @@ func _physics_process(delta):
 
 func changeHealth(changeValue):
 	currentHealth += changeValue
-	self.modulate = Color8(255,0,0)
+	if(currentHealth > 0):
+		self.modulate = Color8(255,0,0)
 	if(currentHealth <=0 && gameOverFired == false):
 		gameOver()
 		gameOverFired = true
@@ -110,6 +111,7 @@ func changeHealth(changeValue):
 
 func killedBoss():
 	isActive = false
+	velocity.x = 0
 	$AudioStreamPlayer2D.stop()
 	
 	punchesObtained += 1
@@ -124,6 +126,11 @@ func killedBoss():
 		$PunchCard.visible = true
 		await TextBoxes.popUpText("Your Sapling Punch Card should have filled out the first slot. This should augment your rover for the rest of the mission.")
 		await TextBoxes.popUpText("Keep going Rover-" +str(TextBoxes.roverNumber) + ". We're all counting on you.")
+		$PunchCard.visible = false
+		
+		get_tree().current_scene.showTree()
+		
+		await get_tree().create_timer(3).timeout
 		
 		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
 		get_tree().change_scene_to_file("res://levels/level_2.tscn")
@@ -138,6 +145,11 @@ func killedBoss():
 		$PunchCard.visible = true
 		await TextBoxes.popUpText("Your Sapling Punch Card should have filled out the second slot. This should augment your rover for the rest of the mission.")
 		await TextBoxes.popUpText("Keep going Rover-" +str(TextBoxes.roverNumber) + ". We're all counting on you.")
+		$PunchCard.visible = false
+		get_tree().current_scene.showTree()
+		
+		await get_tree().create_timer(3).timeout
+		
 		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
 		get_tree().change_scene_to_file("res://levels/level_3.tscn")
 	if(punchesObtained == 3):
@@ -151,8 +163,26 @@ func killedBoss():
 		$PunchCard.visible = true
 		await TextBoxes.popUpText("Your Sapling Punch Card should have filled out the third slot. This should augment your rover for the rest of the mission.")
 		await TextBoxes.popUpText("Keep going Rover-" +str(TextBoxes.roverNumber) + ". We're all counting on you.")
+		$PunchCard.visible = false
+		get_tree().current_scene.showTree()
+		
+		await get_tree().create_timer(3).timeout
 		ChangeScenes.changeScenes(isActive, currentHealth, punchesObtained, enemiesKilled, bulletsFired, ability, bulletSpeed, attackDamage)
 		get_tree().change_scene_to_file("res://levels/level_4.tscn")
+	if(punchesObtained == 4):
+		$PunchCard.texture = load("res://assests/Punch4.png")
+		await TextBoxes.popUpText("Rover-" + str(TextBoxes.roverNumber) + "! If you can hear this, your current location is perfect to plant the last sapling. Activate planting protocol!")
+		$AnimatedSprite2D.play("plantTree")
+		$AudioStreamPlayer2D.stream = load("res://sounds/plantTree.mp3")
+		$AudioStreamPlayer2D.play()
+		await TextBoxes.popUpText("Excellent job Rover-" + str(TextBoxes.roverNumber) + "! It looks like you planted every sapling!")
+		$PunchCard.visible = true
+		#do something else
+		TextBoxes.pressedMouse
+		$PunchCard.visible = false
+		get_tree().current_scene.showTree()
+		
+		await get_tree().create_timer(3).timeout
 
 func freezeMove(number):
 	if(frozen == false):
@@ -161,7 +191,7 @@ func freezeMove(number):
 		speed = 0
 
 func gameOver():
-	hide()
+	$AnimatedSprite2D.visible = false
 	#$CollisionShape2D.set_deferred("disabled", true)
 	#self.queue_free()
 	var done = deathScreen.instantiate()
